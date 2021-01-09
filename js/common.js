@@ -1,19 +1,24 @@
 console.log("common.js");
 
 (function() {
-    let month = 1;
+    let info = new Info();
+    let month = info.readStorage();
+    console.log('month = ' + month);
+
     let createDayBox = new CreateDayBox(month);
+    createDayBox.createMonth();
     createDayBox.create();
 
     document.getElementById('backMonth').addEventListener('click', function() {
-        if(month != 0) {
+        if(month != 1) {
             month--;
         } else {
             month = 12;
         }
-        let createDayBox = new CreateDayBox(month)
+        info.writeStorage(month);
+        console.log('month = ' + month);
+
         createDayBox.delete();
-        createDayBox.create();
     }, false);
 
     document.getElementById('nextMonth').addEventListener('click', function() {
@@ -22,8 +27,9 @@ console.log("common.js");
         } else {
             month = 1;
         }
-        let createDayBox = new CreateDayBox(month);
+        info.writeStorage(month);
+        console.log('month = ' + month);
+
         createDayBox.delete();
-        createDayBox.create();
     }, false);
 }).call(this);
