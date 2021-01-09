@@ -12,6 +12,9 @@ body {
     h3 {
         margin: 0;
     }
+    h4 {
+        margin: 0;
+    }
 }
 
 header {
@@ -42,8 +45,17 @@ header {
     }
 
     &-box {
+        display: flex;
+        flex-direction: row;
         h3 {
             padding-left: 20px;
+            width: 50px;
+            line-height: 40px;
+            border-right: solid 2px black;
+        }
+        h4 {
+            padding: 0 20px;
+            line-height: 40px;
         }
     }
     &-box:nth-child(2n) {

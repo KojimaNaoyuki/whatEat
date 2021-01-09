@@ -81,10 +81,23 @@ class CreateDayBox {
         for(let i = 1; i < this.tgLastDay+1; i++) {
             let div = document.createElement('div');
             let h3 = document.createElement('h3');
+            let h4One = document.createElement('h4');
+            let h4Two = document.createElement('h4');
+            let h4Three = document.createElement('h4');
     
             let textDay = document.createTextNode(i);
+            let textEat1 = document.createTextNode('朝食');
+            let textEat2 = document.createTextNode('昼食');
+            let textEat3 = document.createTextNode('夕食');
             h3.appendChild(textDay);
+            h4One.appendChild(textEat1);
+            h4Two.appendChild(textEat2);
+            h4Three.appendChild(textEat3);
+
             div.appendChild(h3);
+            div.appendChild(h4One);
+            div.appendChild(h4Two);
+            div.appendChild(h4Three);
             div.classList.add('day-box');
             this.tgElement.appendChild(div);
         }
