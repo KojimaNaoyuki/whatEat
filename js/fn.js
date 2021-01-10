@@ -169,37 +169,37 @@ class Info {
                 return this.month1_DoYoyEat;
                 break;
             case '2':
-                return this.month2;
+                return this.month2_DoYoyEat;
                 break;
             case '3':
-                return this.month3;
+                return this.month3_DoYoyEat;
                 break;
             case '4':
-                return this.month4;
+                return this.month4_DoYoyEat;
                 break;
             case '5':
-                return this.month5;
+                return this.month5_DoYoyEat;
                 break;
             case '6':
-                return this.month6;
+                return this.month6_DoYoyEat;
                 break;
             case '7':
-                return this.month7;
+                return this.month7_DoYoyEat;
                 break;
             case '8':
-                return this.month8;
+                return this.month8_DoYoyEat;
                 break;
             case '9':
-                return this.month9;
+                return this.month9_DoYoyEat;
                 break;
             case '10':
-                return this.month10;
+                return this.month10_DoYoyEat;
                 break;
             case '11':
-                return this.month11;
+                return this.month11_DoYoyEat;
                 break;
             case '12':
-                return this.month12;
+                return this.month12_DoYoyEat;
                 break;
         }
     }
