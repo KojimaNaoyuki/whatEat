@@ -43,6 +43,7 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 10px 0 20px 0;
 }
 
 .day-month a {
@@ -87,11 +88,26 @@ header {
   background-color: skyblue;
 }
 
+.day-today {
+  background-color: orange;
+}
+
 .day-red {
   color: red;
 }
 
 .day-yellow {
   color: yellow;
+}
+
+#localStorageDel {
+  text-align: right;
+  text-decoration: underline;
+  color: blue;
+}
+
+#localStorageDel:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 /*# sourceMappingURL=common.css.map */

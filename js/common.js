@@ -32,4 +32,9 @@ console.log("common.js");
 
         createDayBox.delete();
     }, false);
+
+    document.getElementById('localStorageDel').addEventListener('click', function() {
+        info.deleteStorage();
+        console.log('info.deleteStorage()');
+    }, false);
 }).call(this);
