@@ -64,4 +64,10 @@ header {
     &-box:nth-child(2n+1) {
         background-color: skyblue;
     }
+    &-red {
+        color: red;
+    }
+    &-yellow {
+        color: yellow;
+    }
 }

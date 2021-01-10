@@ -86,4 +86,12 @@ header {
 .day-box:nth-child(2n+1) {
   background-color: skyblue;
 }
+
+.day-red {
+  color: red;
+}
+
+.day-yellow {
+  color: yellow;
+}
 /*# sourceMappingURL=common.css.map */
