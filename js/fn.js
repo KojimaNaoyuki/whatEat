@@ -16,6 +16,21 @@ class Info {
         this.month11 = 30;
         this.month12 = 31;
 
+        //各月の初めの曜日
+        //0 = 月  1 = 火 ...
+        this.month1Week = 4;
+        this.month2Week = 0;
+        this.month3Week = 0;
+        this.month4Week = 3;
+        this.month5Week = 5;
+        this.month6Week = 1;
+        this.month7Week = 3;
+        this.month8Week = 6;
+        this.month9Week = 2;
+        this.month10Week = 4;
+        this.month11Week = 0;
+        this.month12Week = 2;
+
         //ご飯いらない時
         // [朝, 昼, 夕]  0 = いる | 1 = 分からない | 2 = いらない
         this.month1_DoYoyEat = [
@@ -121,7 +136,6 @@ class Info {
             [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0],
             [0, 0, 0]
         ];
-
     }
     getLastDay(n) {
         switch (n) {
@@ -203,6 +217,46 @@ class Info {
                 break;
         }
     }
+    getWeek(n) {
+        switch (n) {
+            case '1':
+                return this.month1Week;
+                break;
+            case '2':
+                return this.month2Week;
+                break;
+            case '3':
+                return this.month3Week;
+                break;
+            case '4':
+                return this.month4Week;
+                break;
+            case '5':
+                return this.month5Week;
+                break;
+            case '6':
+                return this.month6Week;
+                break;
+            case '7':
+                return this.month7Week;
+                break;
+            case '8':
+                return this.month8Week;
+                break;
+            case '9':
+                return this.month9Week;
+                break;
+            case '10':
+                return this.month10Week;
+                break;
+            case '11':
+                return this.month11Week;
+                break;
+            case '12':
+                return this.month12Week;
+                break;
+        }
+    }
     getToDay() {
         let today = new Date();
         return today.getDate();
@@ -230,10 +284,11 @@ class CreateDayBox {
     constructor(month) {
         this.info = new Info();
         this.month = month;
-        this.tgLastDay = this.info.getLastDay(this.month);
-        this.tgEatDat = this.info.getEatDat(this.month);
-        this.today = this.info.getToDay();
-        this.nowMonth = this.info.getNowMonth();
+        this.tgLastDay = this.info.getLastDay(this.month); //月の最終日を取得
+        this.tgEatDat = this.info.getEatDat(this.month); //いる、いらないのデータを取得
+        this.today = this.info.getToDay(); //今日の日付を取得
+        this.nowMonth = this.info.getNowMonth(); //今日の月を取得
+        this.weekCount = this.info.getWeek(this.month); //月曜日を0とし、今月の初日の曜日ズレを取得
     }
     create() {
         this.tgElement = document.getElementById('day');
@@ -248,7 +303,7 @@ class CreateDayBox {
             let h4Three = document.createElement('h4');
 
             //テキストノードを作成
-            let textDay = document.createTextNode(i);
+            let textDay = document.createTextNode(i + ' (' + this.selectWeek(i-1) + ')');
             let textEat1 = document.createTextNode('朝食');
             let textEat2 = document.createTextNode('昼食');
             let textEat3 = document.createTextNode('夕食');
@@ -290,6 +345,11 @@ class CreateDayBox {
             if(this.month ==  this.nowMonth && this.today == i) {
                 h3.classList.add('day-today');
             }
+            if(this.selectWeek(i-1) == '土') {
+                h3.classList.add('text-blue');
+            } else if(this.selectWeek(i-1) == '日') {
+                h3.classList.add('text-red');
+            }
 
             this.tgElement.appendChild(div);
         }
@@ -297,6 +357,27 @@ class CreateDayBox {
     createMonth() {
         this.tgElement = document.getElementById('displayMonth');
         this.tgElement.innerHTML = this.month + '月';
+    }
+    selectWeek(day) {
+        day += this.weekCount; //初日との曜日のズレを反映 ex)day=0ならば月だが、曜日ずれで本来は火。ならばその分+1される
+        let n = day % 7;
+        console.log('n = ' + n);
+
+        if(n == 0) {
+            return '月';
+        } else if(n == 1) {
+            return '火';
+        } else if(n == 2) {
+            return '水';
+        } else if(n == 3) {
+            return '木';
+        } else if(n == 4 ) {
+            return '金';
+        } else if(n == 5) {
+            return '土'; 
+        } else if(n == 6) {
+            return '日';
+        }
     }
     delete() {
         document.location.reload();
